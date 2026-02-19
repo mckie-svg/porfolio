@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chris</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Gabarito:wght@400..900&family=Geom:ital,wght@0,300..900;1,300..900&family=Lexend+Deca:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Titan+One&family=Zen+Dots&display=swap" rel="stylesheet">
+ 
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="shortcut icon" href="apple-touch-icon.png" type="image/x-icon">
+
+
+    <script type="text/javascript"
+    
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      }
+    </script>
+    <script>
+      if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+      } else {
+          document.documentElement.classList.remove('dark')
+      }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-200 relative overflow-x-hidden">
+
+    <!-- Navbar -->
+<header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm fixed w-full z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    
+    <a href="index.html" class="flex items-center gap-3 group">
+      <img src="pictures/Gemini_Generated_Image_ito2v5ito2v5ito2-removebg-preview.png" alt="Logo" class="w-12 h-12 rounded-lg shadow-md group-hover:scale-105 transition-transform">
+    </a>
+
+    <div class="flex items-center gap-4">
+      
+      <nav class="hidden md:flex space-x-6 items-center mr-4">
+        <a href="index.html" class="font-bold text-indigo-600 dark:text-indigo-400">Home</a>
+        <a href="portfolio.html" class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400">Portfolio</a>
+        <a href="about.html" class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400">About</a>
+        <a href="index.html#contact" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">
+          Contact
+        </a>
+      </nav>
+
+       <button id="theme-toggle" class="text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-700 rounded-lg text-sm p-2.5">
+        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+      </button>
+
+      <button id="menu-toggle" class="md:hidden text-slate-700 dark:text-slate-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+    </div>
+  </div>
+</header>
+
+<!-- Overlay -->
+<div id="overlay" class="fixed inset-0 bg-black/40 hidden z-40"></div>
+
+<aside id="mobile-menu"
+  class="fixed top-0 left-0 h-full w-80 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl shadow-2xl transform -translate-x-full transition-transform duration-500 ease-in-out z-50 md:hidden border-r border-slate-200/50 dark:border-slate-800/50 flex flex-col">
+
+  <div class="p-8 border-b border-slate-100 dark:border-slate-800/60">
+    <a href="index.html" class="flex items-center gap-4 group">
+        <div class="relative">
+            <img src="pictures/Gemini_Generated_Image_ito2v5ito2v5ito2-removebg-preview.png" class="w-12 h-12 rounded-2xl shadow-lg transition-transform duration-300 group-hover:rotate-6">
+            <div class="absolute inset-0 rounded-2xl bg-indigo-500/10 animate-pulse"></div>
+        </div>
+        <div class="flex flex-col">
+            <span class="font-black text-lg tracking-tighter text-slate-900 dark:text-white leading-tight">Christian</span>
+            <span class="font-bold text-xs uppercase tracking-[0.2em] text-indigo-500">Arevalo</span>
+        </div>
+    </a>
+  </div>
+
+  <nav class="flex-grow flex flex-col p-6 space-y-3">
+    
+    <a href="index.html" class="flex items-center justify-between py-4 px-5 rounded-2xl text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all group">
+      <span class="tracking-tight">Home</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+    </a>
+
+    <a href="portfolio.html" class="flex items-center justify-between py-4 px-5 rounded-2xl text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all group">
+      <span class="tracking-tight">Portfolio</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+    </a>
+
+    <a href="about.html" class="flex items-center justify-between py-4 px-5 rounded-2xl text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all group">
+      <span class="tracking-tight">About</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+    </a>
+
+    <a href="#"
+      class="open-contact-btn mt-6 flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-black uppercase tracking-widest text-xs py-5 rounded-2xl shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 hover:-translate-y-1 transition-all active:scale-95">
+      Get in Touch
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+    </a>
+  </nav>
+
+  <div class="p-8 mt-auto">
+      <p class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] text-center">
+          © 2026 Christian
+      </p>
+  </div>
+</aside>
+    
+
+    <!-- Hero/Profile Section -->
+    <section id="home" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 sm:pt-40 sm:pb-32">
+        <!-- Decorative Background Blobs -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+        <div class="absolute top-20 right-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+
+        <div class="relative dark:bg-slate-900/80 backdrop-blur-md rounded-3xl shadow-2xl  p-8 sm:p-12 flex flex-col md:flex-row gap-10 items-center">
+            <!-- Profile Image -->
+            <div class="shrink-0 relative mx-auto md:mx-0 fade-in">
+                <div class="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-full blur-lg opacity-50"></div>
+                <img src="https://cdn.grapesjs.com/workspaces/cmj1fiaru00g38ihx906f47to/assets/dbc6035f-fc7f-4454-b013-d24e274cd7b1__profileportfolio.jpg" alt="Christian Arevalo" class="relative rounded-full w-56 h-56 md:w-64 md:h-64 object-cover shadow-2xl ring-4 ring-white dark:ring-slate-800">
+                <span class="absolute -bottom-4 -right-4 bg-white px-4 py-2 rounded-full text-indigo-800 text-sm font-bold shadow-lg border border-indigo-100 flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422A12.083 12.083 0 0112 21.25 12.083 12.083 0 015.84 10.578L12 14z" />
+                    </svg>
+                    Junior Developer
+                </span>
+            </div>
+
+            <!-- Profile Info -->
+            <div class="flex-1 flex flex-col justify-between slide-in-left">
+                <div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-300 tracking-tight"><span >Christian Arevalo</span></h1>
+                    <p class="text-indigo-600 font-semibold text-lg mt-1">Web Developer </p>
+                    <p class="mt-4 text-slate-400 leading-relaxed text-sm sm:text-base">
+                        I help clients turn visitors into customers by building fast, responsive, and conversion-focused websites. With over 2+ years of web development experience, I create clear layouts, intuitive user flows, and performance-optimized sites designed to support real business goals.
+                    </p>
+
+                    <!-- Skills / Features -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                        <div class="flex items-center gap-3 p-4 border border-slate-200/80 bg-slate-100/50 rounded-xl hover:bg-white hover:shadow-lg hover:border-indigo-300/30 hover:-translate-y-1 transition-all duration-300 cursor-default group fade-in">
+                            <div class="p-2 bg-white rounded-lg shadow-sm group-hover:text-indigo-600 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-500 group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 17l4-4 4 4m0-5l-4-4-4 4" />
+                            </svg>
+                            </div>
+                            <span class="text-slate-700 font-medium text-sm group-hover:text-slate-900">Client & Audience Understanding</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-4 border border-slate-200/80 bg-slate-100/50 rounded-xl hover:bg-white hover:shadow-lg hover:border-indigo-300/30 hover:-translate-y-1 transition-all duration-300 cursor-default group fade-in delay-75">
+                            <div class="p-2 bg-white rounded-lg shadow-sm group-hover:text-indigo-600 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-500 group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-6h6v6m2 4H7a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v10a2 2 0 01-2 2z" />
+                            </svg>
+                            </div>
+                            <span class="text-slate-700 font-medium text-sm group-hover:text-slate-900">Goal-Focused Website Planning</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-4 border border-slate-200/80 bg-slate-100/50 rounded-xl hover:bg-white hover:shadow-lg hover:border-indigo-300/30 hover:-translate-y-1 transition-all duration-300 cursor-default group fade-in delay-100">
+                            <div class="p-2 bg-white rounded-lg shadow-sm group-hover:text-indigo-600 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-500 group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h4l3 7 4-14 3 7h4" />
+                            </svg>
+                            </div>
+                            <span class="text-slate-700 font-medium text-sm group-hover:text-slate-900">Performance Optimization & Insights</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-4 border border-slate-200/80 bg-slate-100/50 rounded-xl hover:bg-white hover:shadow-lg hover:border-indigo-300/30 hover:-translate-y-1 transition-all duration-300 cursor-default group fade-in delay-150">
+                            <div class="p-2 bg-white rounded-lg shadow-sm group-hover:text-indigo-600 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-slate-500 group-hover:text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 01-8 0m4-4v8" />
+                            </svg>
+                            </div>
+                            <span class="text-slate-700 font-medium text-sm group-hover:text-slate-900">Client Collaboration & Project Ownership</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact / CV Buttons -->
+           <div class="flex mt-6 gap-4 flex-wrap">
+    <!-- Contact Me Button -->
+    <button id="openContactModal" class="btn-blue text-white bg-indigo-600 px-6 py-2 rounded-md flex items-center gap-2 hover:bg-indigo-700 transition shadow-lg shadow-indigo-500/30 hover:shadow-xl">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 4v10"/>
+        </svg>
+        Contact Me
+    </button>
+
+    <!-- Download CV Button -->
+    <a href="resume/Christian Arevalo RESUME.pdf" download="Christian-Arevalo-CV.pdf" class="btn-outline border border-slate-300 px-6 py-2 rounded-md hover:bg-slate-700 transition flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 15V3m0 12l-4-4m4 4l4-4" />
+        </svg>
+        Download CV
+    </a>
+</div>
+
+    </section>
+
+<!-- Modal (hidden by default) -->
+<div id="contactModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-[60] transition-opacity duration-300 p-4">
+    <div class="relative w-full max-w-lg bg-gradient-to-br from-slate-50 via-white to-indigo-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 backdrop-blur-2xl rounded-3xl border border-white/50 dark:border-slate-700/50 shadow-2xl overflow-hidden transform scale-90 opacity-0 transition-all duration-300">
+        
+        <!-- Decorative Background Elements -->
+        <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-32 bg-gradient-to-b from-indigo-500/10 to-transparent"></div>
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <!-- Close Button -->
+        <button id="closeModal" class="absolute top-4 right-4 p-2.5 rounded-full bg-white/80 dark:bg-slate-800/80 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 transition-all z-20 backdrop-blur-sm shadow-md">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+
+        <div class="p-8 sm:p-10">
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 mb-4 shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 4v10"/>
+                    </svg>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight mb-2">Get in Touch</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base">Fill out the form below and I'll get back to you shortly.</p>
+            </div>
+
+            <form id="contactForm" class="flex flex-col gap-5">
+                <div class="space-y-1.5">
+                    <label for="name" class="text-xs font-bold text-indigo-900 dark:text-indigo-300 uppercase tracking-wider ml-1">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="e.g. Christian Arevalo" required
+                        class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3.5 outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-600 font-medium shadow-sm">
+                </div>
+                
+                <div class="space-y-1.5">
+                    <label for="email" class="text-xs font-bold text-indigo-900 dark:text-indigo-300 uppercase tracking-wider ml-1">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="hello@example.com" required
+                        class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3.5 outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-600 font-medium shadow-sm">
+                </div>
+
+                <div class="space-y-1.5">
+                    <label for="message" class="text-xs font-bold text-indigo-900 dark:text-indigo-300 uppercase tracking-wider ml-1">Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="How can I help you?" required
+                        class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3.5 outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-600 font-medium resize-none shadow-sm"></textarea>
+                </div>
+
+                <button type="submit" class="mt-2 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 group">
+                    <span>Send Message</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-[60]">
+    <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative flex flex-col items-center gap-6">
+        <!-- X Close Button -->
+        <button id="closeSuccessModal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-900">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+
+        <!-- Message -->
+        <h3 class="text-lg font-bold text-gray-800 text-center">Message Sent!</h3>
+        <p class="text-center text-gray-600">Thank you for reaching out. I'll get back to you as soon as possible.</p>
+
+        <!-- Go Home Button -->
+        <button id="goHomeButton" class="btn-blue text-white bg-indigo-600 px-6 py-2 rounded-md hover:bg-indigo-700 transition">
+            Close
+        </button>
+    </div>
+</div>
+
+<script src="mail.js"></script>
+
+</body>
+</html>

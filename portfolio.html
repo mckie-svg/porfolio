@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio | Chris</title>
+   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="shortcut icon" href="apple-touch-icon.png" type="image/x-icon">
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+  }
+</script>
+<script>
+  if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+  } else {
+      document.documentElement.classList.remove('dark')
+  }
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-200">
+
+<!-- Navbar -->
+<header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm fixed w-full z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+   <a href="index.html" class="flex items-center gap-3 group">
+      <img src="pictures/Gemini_Generated_Image_ito2v5ito2v5ito2-removebg-preview.png" alt="Logo" class="w-12 h-12 rounded-lg shadow-md group-hover:scale-105 transition-transform">
+    </a>
+
+    <!-- Desktop Menu -->
+    <nav class="hidden md:flex space-x-6 items-center">
+      <a href="index.html" class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400">Home</a>
+      <a href="portfolio.html" class="font-bold text-indigo-600 dark:text-indigo-400">Portfolio</a>
+      <a href="About.html" class="text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400">About</a>
+      <a href="#"
+        class="open-contact-btn bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 transition">
+        Contact
+      </a>
+      <!-- Theme Toggle -->
+      <button id="theme-toggle" class="text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-200 dark:focus:ring-slate-700 rounded-lg text-sm p-2.5">
+        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+      </button>
+    </nav>
+
+    <!-- Mobile Toggle -->
+    <button id="menu-toggle" class="md:hidden text-gray-700 z-50">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- Overlay -->
+<div id="overlay" class="fixed inset-0 bg-black/40 hidden z-40"></div>
+
+<!-- Mobile Side Menu -->
+<aside id="mobile-menu"
+  class="fixed top-0 left-0 h-full w-80 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl shadow-2xl transform -translate-x-full transition-transform duration-500 ease-in-out z-50 md:hidden border-r border-slate-200/50 dark:border-slate-800/50 flex flex-col">
+
+  <div class="p-8 border-b border-slate-100 dark:border-slate-800/60">
+    <a href="index.html" class="flex items-center gap-4 group">
+        <div class="relative">
+            <img src="pictures/Gemini_Generated_Image_ito2v5ito2v5ito2-removebg-preview.png" alt="Logo" class="w-12 h-12 rounded-2xl shadow-lg transition-transform duration-300 group-hover:rotate-6">
+            <div class="absolute inset-0 rounded-2xl bg-indigo-500/10 animate-pulse"></div>
+        </div>
+        <div class="flex flex-col">
+            <span class="font-black text-lg tracking-tighter text-slate-900 dark:text-white leading-tight">Christian</span>
+            <span class="font-bold text-xs uppercase tracking-[0.2em] text-indigo-500">Arevalo</span>
+        </div>
+    </a>
+  </div>
+
+  <nav class="flex-grow flex flex-col p-6 space-y-3">
+    
+    <a href="index.html" class="flex items-center justify-between py-4 px-5 rounded-2xl text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all group">
+      <span class="tracking-tight">Home</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+    </a>
+
+    <a href="portfolio.html" class="flex items-center justify-between py-4 px-5 rounded-2xl text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all group">
+      <span class="tracking-tight">Portfolio</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+    </a>
+
+    <a href="about.html" class="flex items-center justify-between py-4 px-5 rounded-2xl text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all group">
+      <span class="tracking-tight">About</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+    </a>
+
+    <a href="#"
+      class="open-contact-btn mt-6 flex items-center justify-center gap-2 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white font-black uppercase tracking-widest text-xs py-5 rounded-2xl shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/40 hover:-translate-y-1 transition-all active:scale-95">
+      Get in Touch
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+    </a>
+  </nav>
+
+  <div class="p-8 mt-auto">
+      <p class="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.3em] text-center">
+          © 2026 Christian
+      </p>
+  </div>
+</aside>
+
+    
+
+<section class="relative pt-32 pb-20 bg-slate-50 dark:bg-slate-900 overflow-hidden transition-colors duration-300">
+    
+    <div class="absolute inset-0 -z-10">
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+        
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[300px] bg-indigo-500/10 rounded-full blur-[120px]"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 text-center fade-in">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm mb-8">
+            <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+            </span>
+            <span class="text-xs font-black text-slate-500 dark:text-slate-300 uppercase tracking-[0.2em]">Portfolio 2026</span>
+        </div>
+
+        <h1 class="text-6xl sm:text-8xl font-black text-slate-900 dark:text-white mb-8 tracking-tighter">
+            <span class="block">My</span>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-500 to-cyan-400 animate-gradient-x">
+                Work
+            </span>
+        </h1>
+
+        <div class="relative max-w-2xl mx-auto">
+            <p class="text-slate-600 dark:text-slate-400 text-lg sm:text-xl leading-relaxed">
+                A collection of my projects. Feel free to explore.
+            </p>
+            
+            <div class="mt-10 flex items-center justify-center gap-4">
+                <div class="h-[1px] w-12 bg-gradient-to-r from-transparent to-slate-300 dark:to-slate-700"></div>
+                <div class="w-2 h-2 rounded-full bg-indigo-500/40"></div>
+                <div class="h-[1px] w-12 bg-gradient-to-l from-transparent to-slate-300 dark:to-slate-700"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes gradient-x {
+        0%, 100% { background-size: 200% 200%; background-position: left center; }
+        50% { background-size: 200% 200%; background-position: right center; }
+    }
+    .animate-gradient-x {
+        animation: gradient-x 5s ease infinite;
+    }
+</style>
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="bg-slate-50 dark:bg-slate-950 py-24 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="mb-16">
+            <span class="text-indigo-600 dark:text-indigo-400 font-black uppercase tracking-[0.2em] text-sm">Selected Works</span>
+            <h2 class="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mt-3">Featured <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-cyan-500">Projects</span></h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            
+            <div class="group relative bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200/60 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col fade-in">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://colorlib.com/wp/wp-content/uploads/sites/2/mostudio-free-template-353x278.jpg.avif" alt="MoStudio" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-100 transition-opacity"></div>
+                    <div class="absolute bottom-5 left-6">
+                        <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-1 block">Photography</span>
+                        <h3 class="text-2xl font-black text-white">MoStudio</h3>
+                    </div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">A dark and impactful photo studio website template.</p>
+                    <div class="flex flex-wrap gap-2 mb-8 mt-auto">
+                        <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg text-[10px] font-bold uppercase tracking-wider border border-slate-200 dark:border-slate-700">HTML</span>
+                        <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg text-[10px] font-bold uppercase tracking-wider border border-slate-200 dark:border-slate-700">Bootstrap</span>
+                    </div>
+                    <a class="inline-flex items-center gap-2 text-indigo-600 cursor-pointer dark:text-indigo-400 font-bold text-sm hover:gap-3 transition-all">
+                        Live Preview 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="group relative bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200/60 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col fade-in delay-100">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://colorlib.com/wp/wp-content/uploads/sites/2/calvin-free-template-353x278.jpg.avif" alt="Calvin" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-100 transition-opacity"></div>
+                    <div class="absolute bottom-5 left-6">
+                        <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-1 block">Portfolio</span>
+                        <h3 class="text-2xl font-black text-white">Calvin</h3>
+                    </div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">A clean and creative designer portfolio website template.</p>
+                    <div class="flex flex-wrap gap-2 mb-8 mt-auto">
+                        <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg text-[10px] font-bold uppercase tracking-wider border border-slate-200 dark:border-slate-700">HTML</span>
+                        <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg text-[10px] font-bold uppercase tracking-wider border border-slate-200 dark:border-slate-700">Bootstrap</span>
+                    </div>
+                    <a class="inline-flex items-center gap-2 text-indigo-600 cursor-pointer dark:text-indigo-400 font-bold text-sm hover:gap-3 transition-all">
+                        Live Preview 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="group relative bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200/60 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col fade-in delay-200">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="https://colorlib.com/wp/wp-content/uploads/sites/2/clyde-free-template-353x278.jpg.avif" alt="Clyde" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-100 transition-opacity"></div>
+                    <div class="absolute bottom-5 left-6">
+                        <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-1 block">Personal</span>
+                        <h3 class="text-2xl font-black text-white">Clyde</h3>
+                    </div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">A remarkable one-page portfolio website template.</p>
+                    <div class="flex flex-wrap gap-2 mb-8 mt-auto">
+                        <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg text-[10px] font-bold uppercase tracking-wider border border-slate-200 dark:border-slate-700">HTML</span>
+                        <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg text-[10px] font-bold uppercase tracking-wider border border-slate-200 dark:border-slate-700">Bootstrap</span>
+                    </div>
+                    <a  class="inline-flex items-center gap-2 text-indigo-600 cursor-pointer dark:text-indigo-400 font-bold text-sm hover:gap-3 transition-all">
+                        Live Preview 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="group relative bg-white dark:bg-slate-900 rounded-[2rem] border border-slate-200/60 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col md:col-span-1 lg:col-span-1 fade-in">
+                <div class="relative h-64 overflow-hidden">
+                    <img src="pictures/Glester Senining - Virtual Assistant - Google Chrome 2_19_2026 11_01_06 AM.png" alt="Portfolio" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-100 transition-opacity"></div>
+                    <div class="absolute bottom-5 left-6">
+                        <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-1 block">Active</span>
+                        <h3 class="text-2xl font-black text-white">Personal Portfolio</h3>
+                    </div>
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm leading-relaxed">A personal portfolio website to showcase my skills and projects.</p>
+                    <div class="flex flex-wrap gap-2 mb-8 mt-auto">
+                        <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg text-[10px] font-bold uppercase tracking-wider border border-slate-200 dark:border-slate-700">HTML</span>
+                        <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg text-[10px] font-bold uppercase tracking-wider border border-slate-200 dark:border-slate-700">Tailwind CSS</span>
+                        <span class="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg text-[10px] font-bold uppercase tracking-wider border border-slate-200 dark:border-slate-700">JavaScript</span>
+                    </div>
+                    <a  class="inline-flex items-center gap-2 text-indigo-600 cursor-pointer dark:text-indigo-400 font-bold text-sm hover:gap-3 transition-all">
+                        View Details 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    </a>
+                </div>
+            </div>
+
+           <div class="group relative bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200/60 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col md:col-span-2 lg:col-span-2 min-h-[450px] fade-in delay-100">
+    
+    <div class="absolute inset-0 w-full h-full overflow-hidden">
+        <img src="pictures/pos.png" alt="POS System" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+        
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-950/90 via-slate-950/40 to-transparent opacity-90 transition-opacity group-hover:opacity-100"></div>
+    </div>
+
+    <div class="relative mt-auto p-8 md:p-12">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            
+            <div class="max-w-xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/20 backdrop-blur-md mb-4">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                    <span class="text-[10px] font-black text-cyan-400 uppercase tracking-[0.2em]">Enterprise System</span>
+                </div>
+
+                <h3 class="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
+                    Point of Sale <span class="text-cyan-400">System</span>
+                </h3>
+                
+                <p class="text-slate-300 text-base leading-relaxed mb-6">
+                    A web-based POS system for small businesses, featuring full inventory management and real-time sales tracking analytics.
+                </p>
+
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-white/5 backdrop-blur-xl text-white rounded-lg text-[10px] font-bold uppercase tracking-wider border border-white/10 hover:bg-white/10 transition-colors">Node.js</span>
+                    <span class="px-3 py-1 bg-white/5 backdrop-blur-xl text-white rounded-lg text-[10px] font-bold uppercase tracking-wider border border-white/10 hover:bg-white/10 transition-colors">PHP</span>
+                    <span class="px-3 py-1 bg-white/5 backdrop-blur-xl text-white rounded-lg text-[10px] font-bold uppercase tracking-wider border border-white/10 hover:bg-white/10 transition-colors">MySQL</span>
+                </div>
+            </div>
+
+            <div class="shrink-0">
+                <a class="group/btn inline-flex items-center gap-3 px-8 py-4 cursor-pointer bg-white text-slate-900 rounded-2xl font-black text-sm hover:bg-indigo-600 hover:text-white transition-all duration-300 shadow-2xl hover:-translate-y-1">
+                    Launch Project 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform group-hover/btn:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<!-- Modal (hidden by default) -->
+<div id="contactModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-[60] transition-opacity duration-300 p-4">
+    <div class="relative w-full max-w-lg bg-gradient-to-br from-slate-50 via-white to-indigo-50 dark:from-slate-900 dark:via-slate-900 dark:to-slate-800 backdrop-blur-2xl rounded-3xl border border-white/50 dark:border-slate-700/50 shadow-2xl overflow-hidden transform scale-90 opacity-0 transition-all duration-300">
+        
+        <!-- Decorative Background Elements -->
+        <div class="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-32 bg-gradient-to-b from-indigo-500/10 to-transparent"></div>
+            <div class="absolute -top-24 -right-24 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <!-- Close Button -->
+        <button id="closeModal" class="absolute top-4 right-4 p-2.5 rounded-full bg-white/80 dark:bg-slate-800/80 text-slate-500 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 transition-all z-20 backdrop-blur-sm shadow-md">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+
+        <div class="p-8 sm:p-10">
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 mb-4 shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 4v10"/>
+                    </svg>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight mb-2">Get in Touch</h2>
+                <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base">Fill out the form below and I'll get back to you shortly.</p>
+            </div>
+
+            <form id="contactForm" class="flex flex-col gap-5">
+                <div class="space-y-1.5">
+                    <label for="name" class="text-xs font-bold text-indigo-900 dark:text-indigo-300 uppercase tracking-wider ml-1">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="e.g. Christian Arevalo" required
+                        class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3.5 outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-600 font-medium shadow-sm">
+                </div>
+                
+                <div class="space-y-1.5">
+                    <label for="email" class="text-xs font-bold text-indigo-900 dark:text-indigo-300 uppercase tracking-wider ml-1">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="hello@example.com" required
+                        class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3.5 outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-600 font-medium shadow-sm">
+                </div>
+
+                <div class="space-y-1.5">
+                    <label for="message" class="text-xs font-bold text-indigo-900 dark:text-indigo-300 uppercase tracking-wider ml-1">Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="How can I help you?" required
+                        class="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3.5 outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-600 font-medium resize-none shadow-sm"></textarea>
+                </div>
+
+                <button type="submit" class="mt-2 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 group">
+                    <span>Send Message</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-[60]">
+    <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative flex flex-col items-center gap-6">
+        <!-- X Close Button -->
+        <button id="closeSuccessModal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-900">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+
+        <!-- Message -->
+        <h3 class="text-lg font-bold text-gray-800 text-center">Message Sent!</h3>
+        <p class="text-center text-gray-600">Thank you for reaching out. I'll get back to you as soon as possible.</p>
+
+        <!-- Go Home Button -->
+        <button id="goHomeButton" class="btn-blue text-white bg-indigo-600 px-6 py-2 rounded-md hover:bg-indigo-700 transition">
+            Close
+        </button>
+    </div>
+</div>
+<script src="mail.js"></script>
+</body>
+</html>
