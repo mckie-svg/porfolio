@@ -403,7 +403,7 @@
                      alt="Web Development Certification" 
                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                 <div class="absolute inset-0 bg-indigo-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                    <span class="bg-white text-slate-900 px-5 py-2 rounded-full font-bold shadow-xl">View Certificate</span>
+                  
                 </div>
             </div>
 
@@ -422,7 +422,7 @@
             <div class="relative h-56 overflow-hidden">
                 <img src="pictures/intro-to-css.png" alt="Social Media Marketing Certification" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                 <div class="absolute inset-0 bg-indigo-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                    <span class="bg-white text-slate-900 px-5 py-2 rounded-full font-bold shadow-xl">View Certificate</span>
+               
                 </div>
             </div>
 
@@ -441,7 +441,7 @@
             <div class="relative h-56 overflow-hidden">
                 <img src="pictures/installing-configuring-systems.png" alt="Digital Marketing Certification" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                 <div class="absolute inset-0 bg-indigo-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                    <span class="bg-white text-slate-900 px-5 py-2 rounded-full font-bold shadow-xl">View Certificate</span>
+                 
                 </div>
             </div>
 
@@ -460,7 +460,7 @@
             <div class="relative h-56 overflow-hidden">
                 <img src="pictures/setting-up-services.png" alt="Content Writing Certification" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                 <div class="absolute inset-0 bg-indigo-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                    <span class="bg-white text-slate-900 px-5 py-2 rounded-full font-bold shadow-xl">View Certificate</span>
+                   
                 </div>
             </div>
 
@@ -479,7 +479,7 @@
             <div class="relative h-56 overflow-hidden">
                 <img src="pictures/maintaining-systems.png" alt="Virtual Assistant Certification" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                 <div class="absolute inset-0 bg-indigo-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                    <span class="bg-white text-slate-900 px-5 py-2 rounded-full font-bold shadow-xl">View Certificate</span>
+                   
                 </div>
             </div>
 
@@ -494,74 +494,12 @@
 </section>
 
 <!-- Achievement Modal -->
-<div id="achievementModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-[60] transition-opacity duration-300 p-4">
-  <div class="bg-white dark:bg-slate-800 rounded-lg shadow-lg max-w-6xl w-full relative transform scale-90 opacity-0 transition-all duration-300 max-h-[90vh] flex flex-col md:flex-row">
-    <!-- Close Button -->
-    <button id="closeAchievementModal" class="absolute -top-4 -right-4 bg-white rounded-full p-1 text-gray-700 hover:text-gray-900 z-10">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-      </svg>
-    </button>
-
-    <!-- Modal Content -->
-    <div class="w-full md:w-1/2 bg-slate-100 dark:bg-slate-900/50 flex items-center justify-center rounded-t-lg md:rounded-l-lg md:rounded-tr-none overflow-hidden">
-      <img id="modalImage" src="" alt="Achievement Certificate" class="object-contain max-h-[50vh] md:max-h-[80vh] w-auto h-auto">
-    </div>
-    <div class="w-full md:w-1/2 p-6 flex flex-col justify-center">
-      <h3 id="modalTitle" class="text-2xl font-bold mb-2 dark:text-white"></h3>
-      <p id="modalDescription" class="text-slate-700 dark:text-slate-300"></p>
-    </div>
-  </div>
-</div>
 
 <!-- Footer -->
 
 </main>
 <script>
-  const achievementModal = document.getElementById('achievementModal');
-  const closeAchievementModalBtn = document.getElementById('closeAchievementModal');
-  const modalImage = document.getElementById('modalImage');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalDescription = document.getElementById('modalDescription');
-  const achievementCards = document.querySelectorAll('.achievement-card');
-
-  function openAchievementModal(imgSrc, title, desc) {
-    modalImage.src = imgSrc;
-    modalTitle.textContent = title;
-    modalDescription.textContent = desc;
-
-    achievementModal.classList.remove('hidden');
-    achievementModal.classList.add('flex');
-    document.body.style.overflow = 'hidden';
-    setTimeout(() => {
-      achievementModal.querySelector('div').classList.remove('scale-90', 'opacity-0');
-      achievementModal.querySelector('div').classList.add('scale-100', 'opacity-100');
-    }, 10);
-  }
-
-  function closeAchievementModal() {
-    achievementModal.querySelector('div').classList.remove('scale-100', 'opacity-100');
-    achievementModal.querySelector('div').classList.add('scale-90', 'opacity-0');
-    setTimeout(() => {
-      achievementModal.classList.add('hidden');
-      achievementModal.classList.remove('flex');
-      document.body.style.overflow = '';
-    }, 300);
-  }
-
-  achievementCards.forEach(card => {
-    card.addEventListener('click', () => {
-      openAchievementModal(card.dataset.modalImg, card.dataset.modalTitle, card.dataset.modalDesc);
-    });
-  });
-
-  if(closeAchievementModalBtn) closeAchievementModalBtn.addEventListener('click', closeAchievementModal);
-
-  achievementModal.addEventListener('click', (e) => {
-    if (e.target === achievementModal) {
-      closeAchievementModal();
-    }
-  });
+  
 </script>
 <script src="mail.js"></script>
 </body>
