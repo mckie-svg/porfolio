@@ -164,9 +164,11 @@ function init() {
                     name: document.getElementById("name").value,
                     email: document.getElementById("email").value,
                     message: document.getElementById("message").value,
+                    time: new Date().toLocaleString(),
+                    subject: "Your Portfolio",
                 };
 
-                emailjs.send("service_tnd8hid", "template_yej9sje", templateParams)
+                emailjs.send("service_tnd8hid", "template_aekxfsl", templateParams)
                     .then(function(response) {
                         console.log("Email successfully sent!", response.status, response.text);
                         contactForm.reset();
